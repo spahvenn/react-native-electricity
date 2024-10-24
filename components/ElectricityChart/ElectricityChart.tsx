@@ -1,14 +1,16 @@
-import {CartesianChart, Line} from 'victory-native';
+import {CartesianChart, Line, useChartPressState} from 'victory-native';
 import {useFont} from '@shopify/react-native-skia';
 import inter from '../../assets/fonts/SpaceMono-Regular.ttf';
 import {View} from 'react-native';
 import useElectricityPrices from '@/components/ElectricityChart/hooks/useElectricityPrices';
 import {formatElectricityPriceData} from '@/components/ElectricityChart/utils';
+import ToolTip from '@/components/ElectricityChart/components/Tooltip';
 
-const FinnishElectricityChart = () => {
+const ElectricityChart = () => {
   const font = useFont(inter, 12);
 
   const prices = useElectricityPrices();
+  const {state, isActive} = useChartPressState({x: 0, y: {price: 0}});
 
   if (!prices.data) {
     return null;
@@ -22,14 +24,21 @@ const FinnishElectricityChart = () => {
         data={electricityPriceData}
         xKey="hour"
         yKeys={['price']}
-        axisOptions={{font}}
+        chartPressState={state}
+        xAxis={{font}}
+        yAxis={[{font}]}
       >
         {({points}) => (
-          <Line points={points.price} color="red" strokeWidth={3} />
+          <>
+            <Line points={points.price} color="red" strokeWidth={3} />
+            {isActive && (
+              <ToolTip x={state.x.position} y={state.y.price.position} />
+            )}
+          </>
         )}
       </CartesianChart>
     </View>
   );
 };
 
-export default FinnishElectricityChart;
+export default ElectricityChart;
