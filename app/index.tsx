@@ -1,15 +1,11 @@
-import {Text, View} from 'react-native';
+import FinnishElectricityChart from '@/components/ElectricityChart/FinnishElectricityChart';
+import {QueryClientProvider} from '@tanstack/react-query';
+import queryClient from '@/utils';
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <FinnishElectricityChart />
+    </QueryClientProvider>
   );
 }
