@@ -3,3 +3,8 @@ export type ElectricityPrice = {
   startDate: string;
   endDate: string;
 };
+
+export type ChartDataItem = {
+  value: number; // The value of the bar (required)
+  label?: string; // Optional label for the bar
+};
