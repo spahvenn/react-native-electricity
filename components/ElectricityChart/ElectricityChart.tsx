@@ -23,7 +23,7 @@ const ElectricityChart = () => {
     <View
       style={{
         width: screenWidth,
-        paddingVertical: 50,
+        paddingVertical: 20,
       }}
     >
       <BarChart
