@@ -12,7 +12,12 @@ export function getAverageDailyElectricityPrice(prices: ElectricityPrice[]) {
 
 export default function getPriceNow(prices: ElectricityPrice[]) {
   const priceNow = prices.find((price) => {
-    return new Date(price.startDate).getHours() === new Date().getHours();
+    const priceDate = new Date(price.startDate);
+    const todayDate = new Date();
+    return (
+      priceDate.getHours() === todayDate.getHours() &&
+      priceDate.getDay() === todayDate.getDay()
+    );
   });
   return priceNow ? priceNow.price : 0;
 }
