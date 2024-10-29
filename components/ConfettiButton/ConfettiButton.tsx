@@ -1,7 +1,7 @@
 import ConfettiCannon from 'react-native-confetti-cannon';
 import Explosion from 'react-native-confetti-cannon';
-import {Pressable, StyleSheet, Text} from 'react-native';
 import {useRef} from 'react';
+import {Button} from 'react-native-paper';
 
 export default function ConfettiButton() {
   const confettiRef = useRef<Explosion | null>(null);
@@ -12,9 +12,7 @@ export default function ConfettiButton() {
 
   return (
     <>
-      <Pressable style={styles.button} onPress={onPress}>
-        <Text style={styles.text}>Press for some 🎉</Text>
-      </Pressable>
+      <Button onPress={onPress}>Press for some 🎉</Button>
       <ConfettiCannon
         count={200}
         origin={{x: -15, y: -15}}
@@ -25,11 +23,3 @@ export default function ConfettiButton() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {backgroundColor: 'black', padding: 8, borderRadius: 5},
-  text: {
-    color: 'lightgrey',
-    fontSize: 18,
-  },
-});
