@@ -4,11 +4,11 @@ import {formatElectricityPriceData} from '@/components/ElectricityChart/utils';
 import {BarChart} from 'react-native-gifted-charts';
 import {ChartDataItem} from '@/types/types';
 import {Text, useTheme} from 'react-native-paper';
-import {useThemeContext} from '@/components/ThemeProvider/ThemeProvider';
+import {useStore} from '@/store/store';
 
 const ElectricityChart = () => {
   const prices = useElectricityPrices();
-  const {isDarkMode} = useThemeContext();
+  const {isDarkMode} = useStore();
   const theme = useTheme();
   const screenWidth = Dimensions.get('window').width;
 

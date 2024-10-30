@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {Switch, Text} from 'react-native-paper';
-import {useThemeContext} from '@/components/ThemeProvider/ThemeProvider';
 import {View} from 'react-native';
+import {useStore} from '@/store/store';
 
 const DarkModeToggleButton = () => {
-  const {toggleTheme, isDarkMode} = useThemeContext();
+  const {toggleDarkMode, isDarkMode} = useStore();
 
   return (
     <View
@@ -15,7 +15,7 @@ const DarkModeToggleButton = () => {
       }}
     >
       <Text style={{marginRight: 8}}>Dark Mode</Text>
-      <Switch value={isDarkMode} onValueChange={toggleTheme} />
+      <Switch value={isDarkMode} onValueChange={toggleDarkMode} />
     </View>
   );
 };
