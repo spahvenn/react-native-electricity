@@ -12,7 +12,9 @@ export default function ConfettiButton() {
 
   return (
     <>
-      <Button onPress={onPress}>Press for some 🎉</Button>
+      <Button mode="contained" onPress={onPress} style={{marginBottom: 16}}>
+        Press for some 🎉
+      </Button>
       <ConfettiCannon
         count={200}
         origin={{x: -15, y: -15}}

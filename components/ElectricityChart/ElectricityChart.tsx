@@ -1,11 +1,15 @@
-import {Dimensions, Text, View} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import useElectricityPrices from '@/components/ElectricityChart/hooks/useElectricityPrices';
 import {formatElectricityPriceData} from '@/components/ElectricityChart/utils';
 import {BarChart} from 'react-native-gifted-charts';
 import {ChartDataItem} from '@/types/types';
+import {Text, useTheme} from 'react-native-paper';
+import {useThemeContext} from '@/components/ThemeProvider/ThemeProvider';
 
 const ElectricityChart = () => {
   const prices = useElectricityPrices();
+  const {isDarkMode} = useThemeContext();
+  const theme = useTheme();
   const screenWidth = Dimensions.get('window').width;
 
   if (!prices.data) {
@@ -42,18 +46,17 @@ const ElectricityChart = () => {
         stepValue={5} // Sets the interval for Y-axis lines
         noOfSections={8} // Number of sections (matches highest yAxis label)
         barWidth={barWidth}
-        frontColor="#177AD5"
+        frontColor={isDarkMode ? '#177AD5' : theme.colors.onSurface}
         adjustToWidth
         data={electricityPriceData}
-        // Make room for tooltip
         isAnimated
         color="#07BAD1"
         animationDuration={1000}
         yAxisColor="lightgray"
-        yAxisTextStyle={{color: 'lightgray'}}
-        xAxisLabelTextStyle={{color: 'lightgray', fontSize: 10}}
-        xAxisColor="lightgray"
-        backgroundColor="#414141"
+        xAxisLabelTextStyle={{color: theme.colors.onSurface, fontSize: 10}}
+        yAxisTextStyle={{color: theme.colors.onSurface}}
+        xAxisColor={theme.colors.onSurface}
+        xAxisThickness={2}
         rulesColor="gray"
         rulesType="solid"
         spacing={spacing}

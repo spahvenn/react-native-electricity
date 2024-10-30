@@ -1,20 +1,16 @@
 import ElectricityChart from '@/components/ElectricityChart/ElectricityChart';
 import {QueryClientProvider} from '@tanstack/react-query';
 import queryClient from '@/utils';
-import {StyleSheet, View} from 'react-native';
 import {InfoBoxArea} from '@/components/InfoBoxArea/InfoBoxArea';
+import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 
 export default function Index() {
   return (
     <QueryClientProvider client={queryClient}>
-      <View style={styles.container}>
+      <LayoutWrapper>
         <ElectricityChart />
         <InfoBoxArea />
-      </View>
+      </LayoutWrapper>
     </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#414141'},
-});
