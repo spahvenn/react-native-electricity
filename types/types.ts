@@ -6,5 +6,5 @@ export type ElectricityPrice = {
 
 export type ChartDataItem = {
   value: number; // The value of the bar (required)
-  label?: string; // Optional label for the bar
+  label: string; // Optional label for the bar
 };

@@ -1,22 +1,28 @@
 import {ChartDataItem, ElectricityPrice} from '@/types/types';
+import {DateTime} from 'luxon';
 
 export const formatElectricityPriceData = (
   prices: ElectricityPrice[],
+  isDarkMode: boolean,
 ): ChartDataItem[] => {
   const todaysPrices = prices.filter((price) => {
-    return new Date(price.startDate).getDay() === new Date().getDay();
+    return DateTime.fromISO(price.startDate).day === DateTime.now().day;
   });
 
   return todaysPrices
-    .sort(
-      (a, b) =>
-        new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
+    .sort((a, b) =>
+      DateTime.fromISO(a.startDate)
+        .diff(DateTime.fromISO(b.startDate))
+        .toMillis(),
     )
     .map((price) => {
-      const hour = new Date(price.startDate).getHours() + 1;
+      const hour = DateTime.fromISO(price.startDate).hour;
+      const isCurrentHour = DateTime.now().hour === hour;
+      const frontColor = isCurrentHour ? '#00BFFF' : '#177AD5';
+      const frontColorDarkMode = isCurrentHour ? '#00E5FF' : '#177AD5';
       return {
-        // TODO: format to 23:00 etc
-        label: hour % 3 ? '' : String(hour),
+        frontColor: isDarkMode ? frontColorDarkMode : frontColor,
+        label: String(hour),
         value: price.price,
       };
     });
