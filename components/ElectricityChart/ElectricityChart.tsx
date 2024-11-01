@@ -1,8 +1,8 @@
-import {Dimensions, View} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import useElectricityPrices from '@/components/ElectricityChart/hooks/useElectricityPrices';
 import {formatElectricityPriceData} from '@/components/ElectricityChart/utils';
 import {BarChart} from 'react-native-gifted-charts';
-import {useTheme} from 'react-native-paper';
+import {Text, useTheme} from 'react-native-paper';
 import {useStore} from '@/store/store';
 
 const ElectricityChart = () => {
@@ -28,14 +28,9 @@ const ElectricityChart = () => {
   const barWidth = (availableWidth - spacing * (totalBars - 1)) / totalBars;
 
   return (
-    <View
-      style={{
-        width: screenWidth,
-        paddingVertical: 20,
-      }}
-    >
+    <View style={styles.container}>
+      <Text style={styles.yAxisLabelText}>c/kWh</Text>
       <BarChart
-        yAxisLabelTexts={['0', '5', '10', '15', '20', '25', '30', '35', '40']}
         stepValue={5} // Sets the interval for Y-axis lines
         noOfSections={8} // Number of sections (matches highest yAxis label)
         barWidth={barWidth}
@@ -45,10 +40,10 @@ const ElectricityChart = () => {
         color="#07BAD1"
         animationDuration={1000}
         yAxisColor="lightgray"
+        yAxisLabelTexts={['0', '5', '10', '15', '20', '25', '30', '35', '40']}
         xAxisLabelTextStyle={{color: theme.colors.onSurface, fontSize: 10}}
         yAxisTextStyle={{color: theme.colors.onSurface}}
         xAxisColor={theme.colors.onSurface}
-        xAxisThickness={1}
         rulesColor="gray"
         rulesType="solid"
         spacing={spacing}
@@ -56,5 +51,17 @@ const ElectricityChart = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 20,
+  },
+  yAxisLabelText: {
+    position: 'absolute',
+    left: 8,
+    top: -4,
+    fontSize: 14,
+  },
+});
 
 export default ElectricityChart;
