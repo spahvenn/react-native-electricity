@@ -15,7 +15,7 @@ export const formatElectricityPriceData = (
         .diff(DateTime.fromISO(b.startDate))
         .toMillis(),
     )
-    .map((price) => {
+    .map((price, index) => {
       const hour = DateTime.fromISO(price.startDate).hour;
       const isCurrentHour = DateTime.now().hour === hour;
       const frontColor = isCurrentHour ? '#00BFFF' : '#177AD5';
@@ -24,6 +24,7 @@ export const formatElectricityPriceData = (
         frontColor: isDarkMode ? frontColorDarkMode : frontColor,
         label: String(hour),
         value: price.price,
+        leftShiftForTooltip: index > 15 ? 100 : 0,
       };
     });
 };

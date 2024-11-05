@@ -4,10 +4,10 @@ import {formatElectricityPriceData} from '@/components/ElectricityChart/utils';
 import {BarChart} from 'react-native-gifted-charts';
 import {Text, useTheme} from 'react-native-paper';
 import {useStore} from '@/store/store';
+import {ChartDataItem} from '@/types/types';
 
 const ElectricityChart = () => {
   const prices = useElectricityPrices();
-
   const {isDarkMode} = useStore();
   const theme = useTheme();
   const screenWidth = Dimensions.get('window').width;
@@ -38,7 +38,6 @@ const ElectricityChart = () => {
         data={electricityPriceData}
         isAnimated
         color="#07BAD1"
-        animationDuration={1000}
         yAxisColor="lightgray"
         yAxisLabelTexts={['0', '5', '10', '15', '20', '25', '30', '35', '40']}
         xAxisLabelTextStyle={{color: theme.colors.onSurface, fontSize: 10}}
@@ -47,6 +46,26 @@ const ElectricityChart = () => {
         rulesColor="gray"
         rulesType="solid"
         spacing={spacing}
+        renderTooltip={(item: ChartDataItem) => {
+          return (
+            <View
+              style={{
+                marginBottom: -40,
+                marginLeft: -20,
+                backgroundColor: 'white',
+                paddingHorizontal: 6,
+                paddingVertical: 4,
+                borderRadius: 4,
+                borderColor: 'black',
+                borderWidth: 1,
+              }}
+            >
+              <Text style={{color: 'black'}}>
+                {`${item.label}:00, ${item.value.toFixed(2)} c/kWh`}
+              </Text>
+            </View>
+          );
+        }}
       />
     </View>
   );
