@@ -1,10 +1,10 @@
 import {FC} from 'react';
 import {View} from 'react-native';
-import {InfoBox} from '@/components/InfoBox/InfoBox';
-import useElectricityPrices from '@/components/ElectricityChart/hooks/useElectricityPrices';
+import {InfoBox} from '@/src/components/InfoBox/InfoBox';
+import useElectricityPrices from '@/src/hooks/useElectricityPrices';
 import getPriceNow, {
   getAverageDailyElectricityPrice,
-} from '@/components/InfoBoxArea/utils';
+} from '@/src/components/InfoBoxArea/utils';
 
 export const InfoBoxArea: FC = () => {
   const {data: pricesData} = useElectricityPrices();

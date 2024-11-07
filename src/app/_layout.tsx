@@ -1,5 +1,5 @@
 import {SplashScreen, Stack} from 'expo-router';
-import {useStore} from '@/store/store';
+import {useStore} from '@/src/store/store';
 import {DefaultTheme, MD3DarkTheme, PaperProvider} from 'react-native-paper';
 import {Settings} from 'luxon';
 import {useEffect} from 'react';

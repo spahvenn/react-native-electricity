@@ -1,6 +1,6 @@
 import {useQuery, UseQueryResult} from '@tanstack/react-query';
 import Axios from 'axios';
-import {ElectricityPrice} from '@/types/types';
+import {ElectricityPrice} from '@/src/types/types';
 
 const PRICE_ENDPOINT = 'https://api.porssisahko.net/v1/latest-prices.json';
 

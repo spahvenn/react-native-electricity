@@ -1,10 +1,10 @@
 import {Dimensions, StyleSheet, View} from 'react-native';
-import useElectricityPrices from '@/components/ElectricityChart/hooks/useElectricityPrices';
-import {formatElectricityPriceData} from '@/components/ElectricityChart/utils';
+import useElectricityPrices from '@/src/hooks/useElectricityPrices';
+import {formatElectricityPriceData} from '@/src/components/ElectricityChart/utils';
 import {BarChart} from 'react-native-gifted-charts';
 import {Text, useTheme} from 'react-native-paper';
-import {useStore} from '@/store/store';
-import {ChartDataItem} from '@/types/types';
+import {useStore} from '@/src/store/store';
+import {ChartDataItem} from '@/src/types/types';
 
 const ElectricityChart = () => {
   const prices = useElectricityPrices();

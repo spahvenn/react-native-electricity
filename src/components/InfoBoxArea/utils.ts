@@ -1,4 +1,4 @@
-import {ElectricityPrice} from '@/types/types';
+import {ElectricityPrice} from '@/src/types/types';
 import {DateTime} from 'luxon';
 
 export function getAverageDailyElectricityPrice(prices: ElectricityPrice[]) {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Switch, Text} from 'react-native-paper';
 import {View} from 'react-native';
-import {useStore} from '@/store/store';
+import {useStore} from '@/src/store/store';
 
 const DarkModeToggleButton = () => {
   const {toggleDarkMode, isDarkMode} = useStore();

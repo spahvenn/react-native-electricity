@@ -1,9 +1,9 @@
 import {StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-paper';
 
-import ConfettiButton from '@/components/ConfettiButton/ConfettiButton';
-import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
-import DarkModeToggleButton from '@/components/ThemeToggleButton/DarkModeToggleButton';
+import ConfettiButton from '@/src/components/ConfettiButton/ConfettiButton';
+import LayoutWrapper from '@/src/components/LayoutWrapper/LayoutWrapper';
+import DarkModeToggleButton from '@/src/components/ThemeToggleButton/DarkModeToggleButton';
 
 export default function About() {
   return (

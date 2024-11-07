@@ -1,4 +1,4 @@
-import {ChartDataItem, ElectricityPrice} from '@/types/types';
+import {ChartDataItem, ElectricityPrice} from '@/src/types/types';
 import {DateTime} from 'luxon';
 
 export const formatElectricityPriceData = (
