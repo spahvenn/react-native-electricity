@@ -22,7 +22,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Finnish Electricity Prices by Hour',
+          title: "Today's Finnish Electricity Prices",
           tabBarLabel: 'Home',
           tabBarIcon: ({color, focused}) => (
             <Ionicons
