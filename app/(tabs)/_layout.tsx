@@ -22,7 +22,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Finnish Electricity Prices by Hour',
+          tabBarLabel: 'Home',
           tabBarIcon: ({color, focused}) => (
             <Ionicons
               name={focused ? 'home-sharp' : 'home-outline'}
